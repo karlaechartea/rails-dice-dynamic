@@ -34,8 +34,8 @@ class GameController < ApplicationController
   end
 
   def flexible
-  @num_dice = params[:random_dice].to_i
-  @sides = params[:random_sides].to_i
+  @num_dice = params.fetch(:random_dice).to_i
+  @sides = params.fetch(:random_sides).to_i
   @rolls = Array.new(@num_dice) { rand(1..@sides) }
 
   render({ :template => "game_templates/flexible" })
@@ -43,3 +43,4 @@ class GameController < ApplicationController
   end
 
 end
+
